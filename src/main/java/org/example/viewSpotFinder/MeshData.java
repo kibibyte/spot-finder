@@ -1,13 +1,15 @@
 package org.example.viewSpotFinder;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Value;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
+@NoArgsConstructor
 @AllArgsConstructor
-@Value
+@Getter
 public class MeshData {
 
     List<Node> nodes;
@@ -15,6 +17,7 @@ public class MeshData {
     List<Value> values;
 
     @AllArgsConstructor
+    @NoArgsConstructor
     public static class Node {
         public int id;
         public double x;
@@ -22,16 +25,18 @@ public class MeshData {
     }
 
     @AllArgsConstructor
-    @lombok.Value
-    @EqualsAndHashCode(of = "id")
+    @NoArgsConstructor
+    @Getter
     public static class Element {
         public int id;
+        @JsonProperty("nodes")
         public int[] nodeIds;
     }
 
     @AllArgsConstructor
-    @lombok.Value
+    @NoArgsConstructor
     public static class Value {
+        @JsonProperty("element_id")
         public int elementId;
         public double value;
     }

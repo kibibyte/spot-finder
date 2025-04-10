@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class ViewSpotFinder {
-    List<MeshData.Value> find(MeshData meshData, int N) {
+    public List<MeshData.Value> find(MeshData meshData, int N) {
         List<MeshData.Value> values = meshData.getValues();
         Map<Integer, Double> valueMap = new HashMap<>();
         for (MeshData.Value value : values) {
@@ -18,7 +18,7 @@ public class ViewSpotFinder {
             neighboursMap.put(element, neighbours);
         }
 
-        Set<MeshData.Element> viewSpots = new HashSet<>();
+        List<MeshData.Element> viewSpots = new ArrayList<>();
         for (MeshData.Element element : elements) {
             Set<MeshData.Element> neighbours = neighboursMap.get(element);
             boolean isViewSpot = true;
@@ -40,6 +40,10 @@ public class ViewSpotFinder {
 
         return viewSpots.stream()
                 .map(viewSpot -> new MeshData.Value(viewSpot.getId(), valueMap.get(viewSpot.getId())))
+                .sorted(((s1, s2) -> Double.compare(
+                        valueMap.get(s2.elementId),
+                        valueMap.get(s1.elementId)
+                )))
                 .limit(N)
                 .toList();
     }

@@ -10,6 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class ViewSpotFinderTest {
     @Test
     public void testFindTopViewSpots() {
+        //given
         List<MeshData.Node> nodes = Arrays.asList(
                 new MeshData.Node(1, 0, 0),
                 new MeshData.Node(2, 1, 0),
@@ -44,10 +45,12 @@ public class ViewSpotFinderTest {
 
         MeshData mesh = new MeshData(nodes, elements, values);
 
-        ViewSpotFinder finder = new ViewSpotFinder();
-        List<MeshData.Value> viewSpots = finder.find(mesh, 2);
+        //when
+        List<MeshData.Value> viewSpots = new ViewSpotFinder().find(mesh, 2);
 
+        //then
         assertEquals(2, viewSpots.size());
+
         assertEquals(7, viewSpots.get(0).elementId);
         assertEquals(300.0, viewSpots.get(0).value, 0.0001);
 
