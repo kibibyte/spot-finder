@@ -29,11 +29,26 @@
       "id": 6,
       "x": 0.0,
       "y": 1.0
+    },
+    {
+      "id": 7,
+      "x": 0.0,
+      "y": 1.0
+    },
+    {
+      "id": 8,
+      "x": 0.0,
+      "y": 1.0
+    },
+    {
+      "id": 9,
+      "x": 0.0,
+      "y": 1.0
     }
   ],
   "elements": [
     {
-      "id": 101,
+      "id": 1,
       "nodes": [
         1,
         2,
@@ -41,70 +56,82 @@
       ]
     },
     {
-      "id": 102,
+      "id": 2,
       "nodes": [
         2,
         4,
-        3
+        5
       ]
     },
     {
-      "id": 103,
+      "id": 3,
       "nodes": [
         2,
-        5,
-        4
+        3,
+        5
       ]
     },
     {
-      "id": 104,
+      "id": 4,
       "nodes": [
         3,
-        4,
-        1
+        5,
+        6
       ]
     },
     {
-      "id": 105,
+      "id": 5,
       "nodes": [
-        4,
-        6,
-        7
+        5,
+        7,
+        8
       ]
     },
     {
-      "id": 106,
+      "id": 6,
+      "nodes": [
+        5,
+        6,
+        8
+      ]
+    },
+    {
+      "id": 7,
       "nodes": [
         7,
-        6,
+        8,
         9
       ]
     }
   ],
   "values": [
     {
-      "element_id": 101,
-      "value": 5.2
-    },
-    {
-      "element_id": 102,
-      "value": 6.0
-    },
-    {
-      "element_id": 103,
-      "value": 4.3
-    },
-    {
-      "element_id": 104,
-      "value": 6.0
-    },
-    {
-      "element_id": 105,
+      "element_id": 1,
       "value": 100
     },
     {
-      "element_id": 106,
+      "element_id": 2,
       "value": 200
+    },
+    {
+      "element_id": 3,
+      "value": 200
+    },
+    {
+      "element_id": 4,
+      "value": 50
+    },
+    {
+      "element_id": 5,
+      "value": 40
+    },
+    {
+      "element_id": 6,
+      "value": 60
+    },
+    {
+      "element_id": 7,
+      "value": 300
     }
   ]
 }
