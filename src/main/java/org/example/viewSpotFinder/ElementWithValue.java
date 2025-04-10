@@ -1,12 +1,12 @@
 package org.example.viewSpotFinder;
 
+import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
-import lombok.Value;
 
-@Value
+@AllArgsConstructor
 @EqualsAndHashCode(of = "id")
 public class ElementWithValue {
-    int id;
-    int[] nodeIds;
-    double value;
+    private final int id;
+    private final int[] nodeIds;
+    private final double value;
 }
