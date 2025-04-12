@@ -1,43 +1,34 @@
 package org.example.viewSpotFinder;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 import java.util.List;
 
-@NoArgsConstructor
-@AllArgsConstructor
-@Getter
+@lombok.Value
 public class MeshData {
 
     List<Node> nodes;
     List<Element> elements;
     List<Value> values;
 
-    @NoArgsConstructor
-    @AllArgsConstructor
+    @lombok.Value
     public static class Node {
-        public int id;
-        public double x;
-        public double y;
+        int id;
+        double x;
+        double y;
     }
 
-    @NoArgsConstructor
-    @AllArgsConstructor
-    @Getter
+    @lombok.Value
     public static class Element {
-        public int id;
+        int id;
         @JsonProperty("nodes")
-        public int[] nodeIds;
+        int[] nodeIds;
     }
 
-    @NoArgsConstructor
-    @AllArgsConstructor
+    @lombok.Value
     public static class Value {
         @JsonProperty("element_id")
-        public int elementId;
-        public double value;
+        int elementId;
+        double value;
     }
 }

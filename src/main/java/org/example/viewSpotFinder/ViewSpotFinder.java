@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 public class ViewSpotFinder {
     public List<Value> find(MeshData meshData, int limit) {
         List<Value> values = meshData.getValues().stream()
-                .sorted(Comparator.comparingDouble((Value v) -> v.value).reversed())
+                .sorted(Comparator.comparingDouble(Value::getValue).reversed())
                 .toList();
 
         Map<Integer, Element> elements = meshData.getElements().stream()
@@ -23,8 +23,8 @@ public class ViewSpotFinder {
         Set<Integer> visitedNodes = new HashSet<>();
 
         for (Value value : values) {
-            Element element = elements.get(value.elementId);
-            int[] nodeIds = element.nodeIds;
+            Element element = elements.get(value.getElementId());
+            int[] nodeIds = element.getNodeIds();
 
             boolean visited = Arrays.stream(nodeIds).anyMatch(visitedNodes::contains);
 

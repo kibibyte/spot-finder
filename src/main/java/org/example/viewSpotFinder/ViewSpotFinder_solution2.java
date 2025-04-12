@@ -11,14 +11,14 @@ public class ViewSpotFinder_solution2 {
         List<Element> elements = meshData.getElements();
 
         Map<Integer, Double> valueMap = meshData.getValues().stream()
-                .collect(Collectors.toMap(v -> v.elementId, v -> v.value));
+                .collect(Collectors.toMap(Value::getElementId, Value::getValue));
 
         Map<Element, List<Element>> neighbours = getNeighbours(elements);
         List<Element> viewSpots = findViewSpots(elements, neighbours, valueMap);
 
         return viewSpots.stream()
                 .map(viewSpot -> new Value(viewSpot.getId(), valueMap.get(viewSpot.getId())))
-                .sorted(Comparator.comparingDouble((Value v) -> v.value).reversed())
+                .sorted(Comparator.comparingDouble(Value::getValue).reversed())
                 .limit(limit)
                 .toList();
     }
@@ -31,11 +31,11 @@ public class ViewSpotFinder_solution2 {
             List<Element> neighbours = neighbourMap.get(element);
             boolean isViewSpot = true;
             for (Element neighbour : neighbours) {
-                if (valueMap.get(neighbour.id) > valueMap.get(element.id)) {
+                if (valueMap.get(neighbour.getId()) > valueMap.get(element.getId())) {
                     isViewSpot = false;
                     break;
-                } else if (valueMap.get(neighbour.id).equals(valueMap.get(element.id))) {
-                    if (neighbour.id < element.id) {
+                } else if (valueMap.get(neighbour.getId()).equals(valueMap.get(element.getId()))) {
+                    if (neighbour.getId() < element.getId()) {
                         isViewSpot = false;
                         break;
                     }
@@ -53,9 +53,9 @@ public class ViewSpotFinder_solution2 {
         Map<Element, List<Element>> neighboursMap = new HashMap<>();
         for (Element element : elements) {
             List<Element> neighbours = elements.stream().filter(e -> {
-                if (e.id == element.id) return false; // exclude "me" element from set
-                for (int num1 : e.nodeIds) {
-                    for (int num2 : element.nodeIds) {
+                if (e.equals(element)) return false; // exclude "me" element from set
+                for (int num1 : e.getNodeIds()) {
+                    for (int num2 : element.getNodeIds()) {
                         if (num1 == num2) {
                             return true;
                         }

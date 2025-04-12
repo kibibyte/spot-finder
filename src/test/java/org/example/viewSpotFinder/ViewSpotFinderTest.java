@@ -22,11 +22,11 @@ public class ViewSpotFinderTest {
         //then
         assertEquals(2, viewSpots.size());
 
-        assertEquals(7, viewSpots.get(0).elementId);
-        assertEquals(300.0, viewSpots.get(0).value, 0.0001);
+        assertEquals(7, viewSpots.get(0).getElementId());
+        assertEquals(300.0, viewSpots.get(0).getValue(), 0.0001);
 
-        assertEquals(2, viewSpots.get(1).elementId);
-        assertEquals(200.0, viewSpots.get(1).value, 0.0001);
+        assertEquals(2, viewSpots.get(1).getElementId());
+        assertEquals(200.0, viewSpots.get(1).getValue(), 0.0001);
     }
 
     private static MeshData getMeshData() {
