@@ -14,7 +14,7 @@ public class ViewSpotFinder_solution2 {
                 .collect(Collectors.toMap(Value::getElementId, Value::getValue));
 
         Map<Element, List<Element>> neighbours = getNeighbours(elements);
-        List<Element> viewSpots = findViewSpots(elements, neighbours, valueMap);
+        List<Element> viewSpots = find(elements, neighbours, valueMap);
 
         return viewSpots.stream()
                 .map(viewSpot -> new Value(viewSpot.getId(), valueMap.get(viewSpot.getId())))
@@ -23,9 +23,9 @@ public class ViewSpotFinder_solution2 {
                 .toList();
     }
 
-    private List<Element> findViewSpots(List<Element> elements,
-                                        Map<Element, List<Element>> neighbourMap,
-                                        Map<Integer, Double> valueMap) {
+    private List<Element> find(List<Element> elements,
+                               Map<Element, List<Element>> neighbourMap,
+                               Map<Integer, Double> valueMap) {
         List<Element> viewSpots = new ArrayList<>();
         for (Element element : elements) {
             List<Element> neighbours = neighbourMap.get(element);

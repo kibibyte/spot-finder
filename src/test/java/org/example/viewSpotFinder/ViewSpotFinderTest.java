@@ -17,7 +17,7 @@ public class ViewSpotFinderTest {
         MeshData mesh = getMeshData();
 
         //when
-        List<Value> viewSpots = new ViewSpotFinder().find(mesh, 2);
+        List<Value> viewSpots = new ViewSpotFinder_solution3().find(mesh, 2);
 
         //then
         assertEquals(2, viewSpots.size());
